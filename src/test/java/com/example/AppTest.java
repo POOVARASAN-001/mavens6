@@ -1,13 +1,24 @@
 package com.example;
 
-public class App {
-    public boolean isPalindrome(String str) {
-        if (str == null) {
-            return false;
-        }
-        // Remove spaces and convert to lowercase for accurate checking
-        String cleanStr = str.replaceAll("\\s+", "").toLowerCase();
-        String reversedStr = new StringBuilder(cleanStr).reverse().toString();
-        return cleanStr.equals(reversedStr);
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AppTest {
+    @Test
+    public void testValidPalindrome() {
+        App app = new App();
+        assertTrue(app.isPalindrome("radar"));
+    }
+
+    @Test
+    public void testMixedCasePalindrome() {
+        App app = new App();
+        assertTrue(app.isPalindrome("Madam"));
+    }
+
+    @Test
+    public void testInvalidPalindrome() {
+        App app = new App();
+        assertFalse(app.isPalindrome("hello"));
     }
 }
